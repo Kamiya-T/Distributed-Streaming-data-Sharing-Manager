@@ -362,7 +362,6 @@ bool ProxyServer::wait() {
 		socklen_t client_addr_len = sizeof(this->client.client_addr);
 		this->client.data_socket = accept(this->server.wait_socket,
 				(struct sockaddr*) &this->client.client_addr, &client_addr_len);
-
 		if (this->client.data_socket != -1)
 			break;
 		if (errno == EINTR)
@@ -705,6 +704,8 @@ void ProxyServer::setSSMType(PROXY_open_mode mode) {
 }
 
 bool ProxyServer::run() {
+	printf("test¥n");
+	
 	while (wait()) {
 		++nport;
 		pid_t child_pid = fork();
@@ -746,6 +747,7 @@ void ProxyServer::catchSignal(int signo) {
 }
 
 int main(void) {
+	std::cout << "CHECK";
 	ProxyServer server;
 	server.init();
 	server.run();

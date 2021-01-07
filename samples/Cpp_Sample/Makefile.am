@@ -12,9 +12,10 @@ AM_LDFLAGS = -L../../src ../../src/libssm.la -lm
 
 noinst_HEADERS = intSsm.h
 
-noinst_PROGRAMS = ssmReadSample ssmWriteSample ssmPullSample
+##noinst_PROGRAMS = ssmReadSample ssmWriteSample ssmPullSample
+noinst_PROGRAMS = ssmReadSample ssmWriteSample
 
 ##ssmWriteSample, ssmReadSample
 ssmWriteSample_SOURCES = ssmWriteSample.cpp
 ssmReadSample_SOURCES =  ssmReadSample.cpp
-ssmPullSample_SOURCES = ssmPullSample.cpp
+##ssmPullSample_SOURCES = ssmPullSample.cpp

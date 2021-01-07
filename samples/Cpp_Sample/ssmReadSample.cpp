@@ -39,21 +39,18 @@ int main(int aArgc, char **aArgv)
 	// ここでは同じディレクトリに入れてあるが、オドメトリなど標準的な変数は/user/local/include/ssmtype/内で定義されている
 	// c++に慣れていないと馴染みがない書き方だけれど，ここはパターンで使えれば充分
 	// readとwriteで同じ宣言ができていればOK
-	SSMApi<intSsm_k> intSsm(SNAME_INT, 0);
+	SSMApi<intSsm_k> intSsm(SNAME_INT, 1);
 
 	// ssm関連の初期化
-	if(!initSSM()) { // @suppress("Invalid arguments")
-		return 0;
-	}
+	if(!initSSM())return 0;
 	
-	SSM_open_mode SSM_READ = SSM_READ;
 	// 共有メモリにすでにある領域を開く
 	// open 失敗するとfalseを返す
-	if(!(intSsm.open( SSM_READ ))){ endSSM(); return 1; } // @suppress("Invalid arguments")
-
+	if(!(intSsm.open( SSM_READ ))){ endSSM(); return 1; }
 
 	// 安全に終了できるように設定
 	setSigInt();
+
 	//---------------------------------------------------
 	//ループ処理の開始
 	cerr << "start." << endl;

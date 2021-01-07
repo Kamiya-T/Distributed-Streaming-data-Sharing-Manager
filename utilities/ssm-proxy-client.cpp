@@ -318,6 +318,7 @@ bool PConnector::connectToDataServer(const char* serverName, int port) {
 	dsock = socket(AF_INET, SOCK_STREAM, 0);
 	int flag = 1;
 	int ret = setsockopt(dsock, IPPROTO_TCP, TCP_NODELAY, (char*)&flag, sizeof(flag));
+	
 	if (ret == -1) {
 		perror("client setsockopt\n");
 		exit(1);

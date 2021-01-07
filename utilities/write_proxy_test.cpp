@@ -6,6 +6,7 @@
 // c++系
 #include <iostream>
 #include <iomanip>
+#include <string>
 // c系
 #include <unistd.h>
 #include <signal.h>
@@ -70,19 +71,19 @@ int main(int aArgc, char **aArgv) {
 	setSigInt();
 
 	// 書き込む変数
-	int cnt = 0;
+	int cnt = 0x02689268;
 	// 1秒に1回インクリメント
 	while (!gShutOff) {
-		cnt += 1;
-		// con.wdata->データ型 で書き込み
+	  // con.wdata->データ型 で書き込み
+	  
 		con.wdata->num = cnt;
-		printf("write %d\n", cnt);
+		printf("writing\n");
 		// 引数なしだと現在時刻を書き込み
 		con.write();
 
 		// SSM時間に合わせたsleep...だが，speedを1以外に変更できないので引数がそのまま停止時間になる
 		sleepSSM(1);
-	}
+			}
 
 	// coordinatorからの切断
 	con.terminate();
